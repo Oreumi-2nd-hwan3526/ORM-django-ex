@@ -1,0 +1,26 @@
+{% load static %} {% load socialaccount %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        <div class="social-container">
+            <a class="login-button" href="{% url 'social:begin' 'google-oauth2' %}">
+                <img src="{% static 'img/btn_google.svg' %}" alt="Google 로고">구글 로그인
+            </a>
+            <a class="login-button" href="{% url 'social:begin' 'naver' %}">
+                <img src="{% static 'img/btn_naver.svg' %}" alt="Naver 로고">네이버 로그인
+            </a>
+            <a class="login-button" href="{% provider_login_url 'kakao' %}">
+                <img src="{% static 'img/btn_kakao.svg' %}" alt="Kakao 로고">카카오 로그인
+            </a>
+        </div>
+    </div>
+</body>
+</html>

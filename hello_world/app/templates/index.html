@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    장고 첫페이지
+    <a href="{% url 'page' %}">페이지 1로 이동</a>
+    <a href="{% url 'page2' %}">페이지 2로 이동</a>
+
+    <ul>
+        {% for item in items %}
+        <li>{{item}}</li>
+        {% endfor %}
+    </ul>
+
+    {{item2}}
+    {% include "main/header.html" %}
+</body>
+</html>

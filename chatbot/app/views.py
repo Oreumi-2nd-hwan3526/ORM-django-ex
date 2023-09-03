@@ -1,0 +1,22 @@
+from django.shortcuts import render
+from chatterbot import ChatBot
+from chatterbot.ext.django_chatterbot import settings
+from chatterbot.trainers import ChatterBotCorpusTrainer
+
+import collections.abc
+collections.Hashable = collections.abc.Hashable
+
+# Create your views here.
+def chat(request):
+
+    chatbot = ChatBot(**settings.CHATTERBOT)
+    trainer = ChatterBotCorpusTrainer(chatbot)
+    trainer.train('chatterbot.corpus.korean')
+
+    if request.method == "POST":
+        user_input = request.POST.get('user_input')
+        chatbot = ChatBot(**settings.CHATTERBOT)
+        response = chatbot.get_response(user_input)
+        return render(request, 'chat.html', {'user_input': user_input, 'response': response})
+
+    return render(request, 'chat.html')
